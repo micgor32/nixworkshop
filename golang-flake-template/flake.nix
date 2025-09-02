@@ -14,11 +14,11 @@
       overlays.default = import ./overlay.nix;
 
       templates = {
-        app = {
-          path = ./templates/u-root-nix;
+        uroot = {
+          path = ./templates/u-root;
           description = "u-root packaged with Nix";
         };
-        default = self.templates.app;
+        default = self.templates.uroot;
       };
     }
     // (flake-utils.lib.eachSystem

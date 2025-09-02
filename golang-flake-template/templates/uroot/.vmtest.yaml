@@ -1,0 +1,50 @@
+amd64:
+  VMTEST_QEMU:
+    container: "ghcr.io/hugelgupf/vmtest/qemu:main@sha256:d5b3d31f39edb6394d20bdd76027512f956d78af9c6e49ecf2ab9ab59944638a"
+    template: "{{.qemu}}/bin/qemu-system-x86_64 -L {{.qemu}}/pc-bios -m 1G"
+    directories:
+      qemu: "/zqemu"
+
+  VMTEST_KERNEL:
+    container: "ghcr.io/u-root/u-root/test-kernel-amd64@sha256:8b6e8c08724ef0aa2809685c7adb98e1b9b000f79fa790ec254c3176ecc5ec93"
+    template: "{{.bzImage}}"
+    files:
+      bzImage: "/bzImage"
+
+  UROOT_MULTIBOOT_TEST_KERNEL_DIR:
+    container: "ghcr.io/u-root/u-root/test-multiboot-test-kernel-amd64@sha256:4439ae6289f5ccb5fa193556de8d639900c1a4c6f57c8d1d6015f5ea49b5d9f9"
+    template: "{{.mbdir}}"
+    directories:
+      mbdir: "/mb"
+
+  UROOT_TEST_UEFIPAYLOAD:
+    container: "ghcr.io/u-root/u-root/test-uefipayload-amd64@sha256:0c8eb1b8a20b1ab3748b830eef76634711586f18ff0accf7ba98015fa86383ff"
+    template: "{{.payload}}"
+    files:
+      payload: "/UEFIPAYLOAD.fd"
+
+arm:
+  VMTEST_QEMU:
+    container: "ghcr.io/hugelgupf/vmtest/qemu:main@sha256:d5b3d31f39edb6394d20bdd76027512f956d78af9c6e49ecf2ab9ab59944638a"
+    template: "{{.qemu}}/bin/qemu-system-arm -M virt,highmem=off -L {{.qemu}}/pc-bios"
+    directories:
+      qemu: "/zqemu"
+
+  VMTEST_KERNEL:
+    container: "ghcr.io/u-root/u-root/test-kernel-arm@sha256:0550f61f1a620033fc20ec642361f53c00fa8d02b077a637bef41fe62b71461a"
+    template: "{{.zImage}}"
+    files:
+      zImage: "/zImage"
+
+arm64:
+  VMTEST_QEMU:
+    container: "ghcr.io/hugelgupf/vmtest/qemu:main@sha256:d5b3d31f39edb6394d20bdd76027512f956d78af9c6e49ecf2ab9ab59944638a"
+    template: "{{.qemu}}/bin/qemu-system-aarch64 -machine virt -cpu max -m 1G -L {{.qemu}}/pc-bios"
+    directories:
+      qemu: "/zqemu"
+
+  VMTEST_KERNEL:
+    container: "ghcr.io/u-root/u-root/test-kernel-arm64@sha256:d0b65ec5584fef929828324b0f998ad7e853c95bcc2288a163ebdf64401fe5a0"
+    template: "{{.Image}}"
+    files:
+      Image: "/Image"
