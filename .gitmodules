@@ -1,0 +1,3 @@
+[submodule "golang-flake-template/templates/u-root"]
+	path = golang-flake-template/templates/u-root
+	url = https://github.com/u-root/u-root.git
