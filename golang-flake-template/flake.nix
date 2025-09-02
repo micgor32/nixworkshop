@@ -15,7 +15,7 @@
 
       templates = {
         uroot = {
-          path = ./templates/u-root;
+          path = ./templates/uroot;
           description = "u-root packaged with Nix";
         };
         default = self.templates.uroot;
